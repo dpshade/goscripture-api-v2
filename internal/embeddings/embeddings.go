@@ -21,8 +21,7 @@ type EmbeddingService struct {
 	config          *config.Config
 	modelLoaded     bool
 	mu              sync.RWMutex
-	// Removed old ONNX service
-	realOnnxService *RealONNXEmbeddingService // New real ONNX service
+	realOnnxService *RealONNXEmbeddingService
 	simpleService   *SimpleEmbeddingService
 	usePrecomputed  bool
 }
@@ -97,7 +96,6 @@ func (s *EmbeddingService) EmbedQuery(text string) ([]float32, error) {
 		}
 	}
 	
-	// Old ONNX service removed
 	
 	// Try simple service
 	if s.simpleService != nil {
@@ -119,7 +117,6 @@ func (s *EmbeddingService) EmbedDocument(text string) ([]float32, error) {
 		}
 	}
 	
-	// Old ONNX service removed
 	
 	// Try simple service
 	if s.simpleService != nil {
